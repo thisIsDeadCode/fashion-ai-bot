@@ -1,0 +1,4 @@
+C:\Users\vladi\Desktop\TgBotFasion\TgBotFasion\obj\Debug\net8.0\TgBotFasion.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\vladi\Desktop\TgBotFasion\TgBotFasion\obj\Debug\net8.0\TgBotFasion.AssemblyInfoInputs.cache
+C:\Users\vladi\Desktop\TgBotFasion\TgBotFasion\obj\Debug\net8.0\TgBotFasion.AssemblyInfo.cs
+C:\Users\vladi\Desktop\TgBotFasion\TgBotFasion\obj\Debug\net8.0\TgBotFasion.csproj.CoreCompileInputs.cache
