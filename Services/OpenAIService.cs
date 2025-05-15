@@ -141,7 +141,7 @@ public class OpenAIService : IOpenAIService, IDisposable
         var requestData = new
         {
             model = _settings.ImageGenerationModel,
-            prompt = $"{prompt}\n\nIMPORTANT: Create vertical portrait (9:16) image with full-body model",
+            prompt = $"{prompt}\n\nIMPORTANT: Create vertical portrait (9:16) image, photo-realistic, hyper-realistic, studio lighting, 8k photograph, real human model",
             size = "1024x1792", // Вертикальный формат
             quality = _settings.ImageQuality,
             style = _settings.ImageStyle,
@@ -207,9 +207,9 @@ public class OpenAIService : IOpenAIService, IDisposable
         contentItems.Add(new { type = "image_url", image_url = new { url } });
     }
     
-    // Добавляем текстовые элементы
-    contentItems.Add(new { type = "text", text = userPromptTemplate });
-    contentItems.Add(new { type = "text", text = $"Additional requirements: {additionalPrompt}" });
+    //// Добавляем текстовые элементы
+    //contentItems.Add(new { type = "text", text = userPromptTemplate });
+    //contentItems.Add(new { type = "text", text = $"Additional requirements: {additionalPrompt}" });
 
     var messages = new List<object>
     {
@@ -238,7 +238,14 @@ public class OpenAIService : IOpenAIService, IDisposable
     }
 
     var result = await response.Content.ReadFromJsonAsync<OpenAIChatResponse>();
-    return result?.Choices?.FirstOrDefault()?.Message?.Content;
+    var temp = $"{result?.Choices?.FirstOrDefault()?.Message?.Content}\n" +
+                $"{userPromptTemplate}" +
+                $"\n" +
+                $"Дополнительный запрос от клиента:" +
+                $"\n" +
+                $"{additionalPrompt}";
+
+    return temp;
 }
 
     public void Dispose()
